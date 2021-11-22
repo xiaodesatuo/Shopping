@@ -19,7 +19,17 @@
 */
 
 import Route from '@ioc:Adonis/Core/Route'
+import Database from '@ioc:Adonis/Lucid/Database'
 
 Route.get('/', async ({ view }) => {
   return view.render('welcome')
+})
+
+Route.get('/data', async () => {
+
+  return Database
+    .from('Car')
+    .select('*')
+    .orderBy('idCar', 'desc')
+   
 })
